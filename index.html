@@ -123,7 +123,15 @@ public static void main(String[] args){
  String text = scanner.nextLine();
  String pattern = scanner.nextLine();
 naiveStringMatch(text, pattern);
-scanner.close();}}`,
+scanner.close();}}
+
+algorithm
+Let the text have length n and the pattern have length m.
+For each position i from 0 to n − m:
+• Compare the substring of text starting at i with the pattern.
+• If all characters match, record the position as a match.
+• If any character does not match, move to the next position.
+`,
 
 
     "Quick sort": `import java.util.Scanner; 
@@ -153,6 +161,19 @@ ob.quickSort(a, 0, a.length - 1);
 for (int i = 0; i < a.length; ++i) 
 System.out.print(a[i] + " "); 
 sc.close(); }}
+
+Algorithm
+Let the array have n elements.
+• If the array has 0 or 1 elements, it is already sorted.
+• Select a pivot element.
+• Partition the array into two parts:
+ – Elements less than the pivot.
+ – Elements greater than or equal to the pivot.
+• Recursively apply quick sort to the two partitions.
+• Combine the sorted parts and pivot to get the sorted array.
+
+
+
 `,
  
 
@@ -187,7 +208,17 @@ a[i] = sc.nextInt(); }
 Merge ob = new Merge(); ob.sort(a,0,a.length-1); 
 for (int i = 0; i < a.length; ++i) 
 System.out.print(a[i] + " "); 
-sc.close(); } }`,
+sc.close(); } }
+
+Algorithm
+Let the array have n elements.
+• If the array has 0 or 1 elements, it is already sorted.
+• Divide the array into two halves.
+• Recursively sort each half.
+• Merge the two sorted halves into one sorted array.
+• Return the merged array.
+
+`,
 
 
 "Min-Max Element in array": `
@@ -219,7 +250,15 @@ int n = sc.nextInt(); int arr[] = new int[n];
 for(int i=0;i<   n;i++){arr[i] = sc.nextInt();}
 Result result = findMinMax(arr, 0, arr.lengt- 1);
 System.out.println(result.min);
-System.out.println(result.max);}}`,
+System.out.println(result.max);}}
+
+algorithm
+Let the array have n elements.
+• Initialize min and max with the first element.
+• For each element in the array:
+  If the element is less than min, update min.
+  If the element is greater than max, update max.
+• After the loop, min holds the smallest and max holds the largest value.`,
 
 
 "0/1 Knapsack problem using dynamic programming": `
@@ -246,6 +285,16 @@ int capacity = scanner.nextInt();
 int maxProfit = solveKnapsack(profits, weights, capacity); 
 System.out.println(maxProfit); 
 scanner.close(); } }
+
+Algorithm
+Let there be n items and the knapsack capacity be W.
+• Create a table of size (n+1) × (W+1), initialized to 0.
+• For each item i from 1 to n:
+ – For each weight w from 1 to W:
+  – If weight of item i ≤ w:
+   • Set dp[i][w] = max(dp[i-1][w], dp[i-1][w - weight[i]] + value[i])
+  – Else, set dp[i][w] = dp[i-1][w]
+• The value in dp[n][W] is the maximum value that can be carried.
 `,
 
 "Binary Search using the divide and conquer": `
@@ -264,6 +313,17 @@ int res = ob.binarySearch(a, 0, n - 1, x);
 if (res == -1) System.out.println("-1"); 
 else System.out.println(res+1); 
 sc.close(); } }
+
+Algorithm
+
+Let the array be sorted and have n elements.
+• Set low = 0 and high = n − 1.
+• While low ≤ high:
+ – Compute mid = (low + high) / 2
+ – If the element at mid is the target, return mid.
+ – If target < mid element, search in the left half.
+ – Else, search in the right half.
+• If the element is not found, return -1.
 `,
 
 "Insertion sort1": `
@@ -287,6 +347,19 @@ for(int i=0; i<  size; i++)
 { arr[i] = scanner.nextInt(); } 
 insertionSort(arr); printArray(arr); 
 scanner.close(); } } 
+
+Algorithm
+
+Let the array have n elements.
+• Start from the second element (index 1).
+• For each element at position i:
+ – Store it in a variable key.
+ – Compare it with elements to its left.
+ – Shift all greater elements to the right.
+ – Insert key at the correct position.
+• Repeat for all elements.
+
+
 `,
 
 
@@ -314,7 +387,15 @@ for (int i = 0; i < n; i++) {
 arr[i] = scanner.nextInt(); 
 } // printArray(arr); 
 selectionSort(arr); printArray(arr); 
-scanner.close(); } }`,
+scanner.close(); } }
+
+Algorithm
+Let the array have n elements.
+• For each position i from 0 to n−1:
+ – Find the smallest element in the unsorted part of the array.
+ – Swap it with the element at position i.
+• Continue until the array is sorted.
+`,
 
 
 
@@ -345,6 +426,15 @@ if (solve(graph, m, color, 0)) {
 for (int c : color) System.out.print(c + " "); 
 } else { 
 System.out.println("No solution"); }}}
+
+Algorithm
+Let the graph have n vertices and m colors.
+• Start at vertex 0.
+• For each color from 1 to m:
+ – If the color is not used by any adjacent vertex, assign it.
+ – Move to the next vertex and repeat the process.
+ – If no color is valid, backtrack and try another color.
+• If all vertices are colored without conflict, return success.
 `
 },
   
