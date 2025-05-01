@@ -3,46 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Subject and Program Selector</title>
+  <title>Parikshak: Online Program Grading Tool</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
     }
+
+    /* Logo in top-right corner */
+    .logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 80px auto 40px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+
     .subject, .program {
       cursor: pointer;
       color: #007BFF;
       margin: 10px 0;
+      text-align: center;
     }
+
     .subject:hover, .program:hover {
       text-decoration: underline;
     }
+
     #programs, #codeDisplay {
       margin-top: 20px;
     }
+
     pre {
       background: #f0f0f0;
       padding: 10px;
       border: 1px solid #ccc;
       white-space: pre-wrap;
     }
+
+    .image-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .image-section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
   </style>
-  <!-- //newcode -->
 </head>
 <body>
 
-<h1>Select a Subject</h1>
+  <!-- Logo in top-right corner -->
+  <img class="logo" src="Screenshot 2025-05-01 232254.png" alt="Logo">
 
-<div id="subjects">
-  <div class="subject" onclick="showPrograms('AOA')">AOA</div>
-  <div class="subject" onclick="showPrograms('EH')">EH</div>
-  <div class="subject" onclick="showPrograms('DBMS')">DBMS</div>
-  <div class="subject" onclick="showPrograms('PYTHON')">PYTHON</div>
-</div>
 
-<div id="programs"></div>
 
-<div id="codeDisplay"></div>
+    <div class="image-section">
+      <img src="Screenshot 2025-05-01 232407.png" alt="Parikshak Screenshot">
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Select a Subject</h1>
+
+    <div id="subjects">
+      <div class="subject" onclick="showPrograms('AOA')">AOA</div>
+      <div class="subject" onclick="showPrograms('EH')">EH</div>
+      <div class="subject" onclick="showPrograms('DBMS')">DBMS</div>
+      <div class="subject" onclick="showPrograms('PYTHON')">PYTHON</div>
+    </div>
+
+    <div id="programs"></div>
+    <div id="codeDisplay"></div>
 
 <script>
 // Programs and their codes
@@ -337,8 +391,42 @@ function showPrograms(subject) {
 function showCode(subject, programName) {
   const codeDisplay = document.getElementById('codeDisplay');
   const code = data[subject][programName];
-  codeDisplay.innerHTML = `<h2>${programName} Code:</h2><pre>${code}</pre>`;
+  const escapedCode = code.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  codeDisplay.innerHTML = `
+    <h2>${programName} Code:</h2>
+    <div style="position: relative;">
+      <button onclick="copyCode()" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Copy</button>
+      <pre id="codeBlock">${escapedCode}</pre>
+    </div>
+  `;
 }
+
+function copyCode() {
+  const codeText = document.getElementById('codeBlock').innerText;
+  navigator.clipboard.writeText(codeText).then(() => {
+    const copiedMsg = document.createElement('div');
+    copiedMsg.innerText = 'Copied!';
+    copiedMsg.style.position = 'fixed';
+    copiedMsg.style.bottom = '20px';
+    copiedMsg.style.right = '20px';
+    copiedMsg.style.backgroundColor = '#4caf50';
+    copiedMsg.style.color = '#fff';
+    copiedMsg.style.padding = '10px 15px';
+    copiedMsg.style.borderRadius = '5px';
+    copiedMsg.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+    copiedMsg.style.zIndex = '1000';
+    document.body.appendChild(copiedMsg);
+
+    setTimeout(() => {
+      copiedMsg.remove();
+    }, 2000); // Disappears after 2 seconds
+  }).catch(err => {
+    console.error('Failed to copy code:', err);
+  });
+}
+
+
 </script>
 
 </body>
