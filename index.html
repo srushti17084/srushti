@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subject and Program Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .subject, .program {
+      cursor: pointer;
+      color: #007BFF;
+      margin: 10px 0;
+    }
+    .subject:hover, .program:hover {
+      text-decoration: underline;
+    }
+    #programs, #codeDisplay {
+      margin-top: 20px;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Select a Subject</h1>
+
+<div id="subjects">
+  <div class="subject" onclick="showPrograms('AOA')">AOA</div>
+  <div class="subject" onclick="showPrograms('EH')">EH</div>
+  <div class="subject" onclick="showPrograms('DBMS')">DBMS</div>
+  <div class="subject" onclick="showPrograms('PYTHON')">PYTHON</div>
+</div>
+
+<div id="programs"></div>
+
+<div id="codeDisplay"></div>
+
+<script>
+// Programs and their codes
+const data = {
+  AOA: {
+    "Naïve String-Matching": `
+import java.util.Scanner;
+public class Naive {
+public static void naiveStringMatch(String text, String pattern){
+int textLength = text.length();
+int patternLength = pattern.length();
+boolean found = false;
+for(int i=0; i<= textLength - patternLength; i++){
+int j;
+for(j=0; j< patternLength; j++){
+if(text.charAt(i+j)!= pattern.charAt(j))
+{break;}}
+if(j== patternLength){
+ System.out.println(+i);
+found = true; }}
+if(!found){ }}
+public static void main(String[] args){
+ Scanner scanner = new Scanner(System.in);
+ String text = scanner.nextLine();
+ String pattern = scanner.nextLine();
+naiveStringMatch(text, pattern);
+scanner.close();}}`,
+
+
+    "Quick sort": `import java.util.Scanner; 
+class Quick { 
+int partition(int a[], int low, int high){ 
+int pivot = a[high]; 
+int i = low - 1; 
+for (int j = low; j < high; j++) { 
+if (a[j] <= pivot) {i++; int temp = a[i]; 
+a[i] = a[j]; a[j] = temp; }} 
+int temp = a[i + 1]; a[i + 1] = a[high]; 
+a[high] = temp; 
+return i + 1;}
+void quickSort(int a[], int low, int high) { 
+if (low < high) { 
+int pi = partition(a, low, high); 
+quickSort(a, low, pi - 1); 
+quickSort(a, pi + 1, high); }} 
+public static void main(String args[]) { 
+Scanner sc = new Scanner(System.in); 
+int n = sc.nextInt(); 
+int a[] = new int[n]; 
+for (int i = 0; i < n; i++) { 
+a[i] = sc.nextInt(); } 
+Quick ob = new Quick(); 
+ob.quickSort(a, 0, a.length - 1); 
+for (int i = 0; i < a.length; ++i) 
+System.out.print(a[i] + " "); 
+sc.close(); }}
+`,
+ 
+
+
+
+
+
+"Merge Sort": `
+import java.util.Scanner; 
+class Merge{ 
+void merge(int a[], int l, int m, int r) { 
+int n1 = m - l + 1; int n2 = r - m; 
+int L[] = new int[n1]; int R[] = new int[n2]; 
+for (int i = 0; i < n1; ++i) L[i] = a[l + i]; 
+for (int j = 0; j < n2; ++j) R[j] = a[m +1 +j]; 
+int i = 0, j = 0; int k = l; 
+while (i < n1 && j < n2) { 
+if (L[i] <= R[j]) { a[k] = L[i]; i++; }
+else { a[k] = R[j]; j++; } k++; } 
+while (i < n1) { a[k] = L[i]; i++; 
+k++;} while (j < n2) { a[k] = R[j]; 
+j++; k++; } } 
+void sort(int a[], int l, int r) { 
+if (l < r) {int m = (l + r) / 2; 
+sort(a, l, m); sort(a, m + 1, r); 
+merge(a, l, m, r); } } 
+public static void main(String args[]) { 
+Scanner sc = new Scanner(System.in); 
+int n = sc.nextInt(); int a[] = new int[n]; 
+for (int i = 0; i < n; i++) { 
+a[i] = sc.nextInt(); } 
+Merge ob = new Merge(); ob.sort(a,0,a.length-1); 
+for (int i = 0; i < a.length; ++i) 
+System.out.print(a[i] + " "); 
+sc.close(); } }`,
+
+
+"Maximum Element in array": `
+import java.util.Scanner; 
+class Max { 
+public static void main(String args[]) { 
+Scanner sc = new Scanner(System.in); 
+int n = sc.nextInt(); int arr[] = new int[n]; 
+for (int i = 0; i < n; i++) { 
+arr[i] = sc.nextInt(); } int max = arr[0]; 
+for (int i = 1; i < arr.length; i++) { 
+if (max < arr[i]) { max = arr[i]; } } 
+System.out.println(max); 
+sc.close(); } }`,
+
+"Minimum element in array": `
+import java.util.Scanner; 
+class Max { 
+public static void main(String args[]) { 
+Scanner sc = new Scanner(System.in); 
+int n = sc.nextInt(); int arr[] = new int[n]; 
+for (int i = 0; i < n; i++) { 
+arr[i] = sc.nextInt(); } int max = arr[0]; 
+for (int i = 1; i < arr.length; i++) { 
+if (max < arr[i]) { max = arr[i]; } } 
+System.out.println(max); 
+sc.close(); } }`,
+
+"0/1 Knapsack problem using dynamic programming": `
+import java.util.Scanner; 
+public class KnapsackDP { 
+public static int solveKnapsack(int[] profits, 
+int[] weights, int capacity) { int n = 
+profits.length; int[][] dp = new int[n + 1]
+[capacity + 1]; 
+for (int i = 1; i <= n; i++) { 
+for (int w = 1; w <= capacity; w++) { 
+if (weights[i - 1] <= w) 
+dp[i][w] = Math.max(dp[i -1][w], profits[i -1]+ 
+dp[i - 1][w - weights[i - 1]]); 
+else dp[i][w] = dp[i - 1][w]; } } 
+return dp[n][capacity]; } 
+public static void main(String[] args) { 
+Scanner scanner = new Scanner(System.in);  
+int n = scanner.nextInt(); int[] profits = new int[n]; 
+int[] weights = new int[n]; 
+for (int i = 0; i < n; i++) profits[i] = scanner.nextInt(); 
+for (int i = 0; i < n; i++) weights[i] = scanner.nextInt(); 
+int capacity = scanner.nextInt(); 
+int maxProfit = solveKnapsack(profits, weights, capacity); 
+System.out.println(maxProfit); 
+scanner.close(); } }
+`,
+
+"Binary Search using the divide and conquer": `
+import java.util.Scanner; 
+class Binary{ 
+int binarySearch(int a[], int l, int r, int x) { 
+while (l <= r) { int m = (l + r) / 2; 
+if (a[m] == x) { return m; } else if (a[m] > x) { 
+r = m - 1; } else { l = m + 1; }} return -1; } 
+ public static void main(String args[]) { 
+Scanner sc = new Scanner(System.in); 
+int n = sc.nextInt(); int a[] = new int[n]; 
+for (int i = 0; i < n; i++) { a[i] = sc.nextInt(); } 
+int x = sc.nextInt(); Binary ob = new Binary(); 
+int res = ob.binarySearch(a, 0, n - 1, x); 
+if (res == -1) System.out.println("-1"); 
+else System.out.println(res+1); 
+sc.close(); } }
+`,
+
+"Insertion sort1": `
+import java.util.Scanner; 
+public class InsertionSort { 
+public static void insertionSort(int[] arr) { 
+int n = arr.length; for (int i = 1; i < n; i++)
+{ int key = arr[i];  int j = i - 1; 
+while (j >= 0 && arr[j] > key) { 
+arr[j + 1] = arr[j]; 
+j = j - 1; } arr[j + 1] = key;   } } 
+public static void printArray(int[] arr) { 
+for (int i = 0; i < arr.length; i++) { 
+System.out.print(arr[i] + " "); } 
+System.out.println(); } 
+public static void main(String[] args) { 
+Scanner scanner = new Scanner(System.in); 
+int size = scanner.nextInt(); int[] 
+arr = new int[size]; 
+for(int i=0; i<  size; i++)
+{ arr[i] = scanner.nextInt(); } 
+insertionSort(arr); printArray(arr); 
+scanner.close(); } } 
+`,
+
+
+
+"Selection Sort": `
+import java.util.Scanner; 
+class Main { 
+static void selectionSort(int[] arr){ 
+int n = arr.length; 
+for (int i = 0; i < n - 1; i++) { 
+int min_idx = i; 
+for (int j = i + 1; j < n; j++) { 
+if (arr[j] < arr[min_idx]) { 
+min_idx = j; } } int temp = arr[i]; 
+arr[i] = arr[min_idx]; arr[min_idx] = temp;
+}} static void printArray(int[] arr){ 
+for (int val : arr) { 
+System.out.print(val + " "); } 
+System.out.println(); } 
+public static void main(String[] args){ 
+Scanner scanner = new Scanner(System.in); 
+int n = scanner.nextInt(); 
+int[] arr = new int[n]; 
+for (int i = 0; i < n; i++) { 
+arr[i] = scanner.nextInt(); 
+} // printArray(arr); 
+selectionSort(arr); printArray(arr); 
+scanner.close(); } }`,
+
+
+
+"Graph Coloring": `
+import java.util.Scanner; 
+public class GraphColoring { 
+static boolean isSafe(int v, int[][] graph, 
+int[] color, int c){
+for(int i = 0; i<   graph.length; i++) 
+if (graph[v][i] == 1 && color[i] == c) 
+return false; return true; } 
+static boolean solve(int[][] graph, int m, 
+int[] color, int v) { if (v == graph.length) 
+return true; for (int c = 1; c <= m; c++){ 
+if (isSafe(v, graph, color, c)){ 
+color[v] = c; if (solve(graph, m, color,v + 1)) 
+return true; color[v]=0; }} return false; }
+public static void main(String[] args) { 
+Scanner sc = new Scanner(System.in); 
+int n = sc.nextInt();  
+int m = sc.nextInt();      
+int[][] graph = new int[n][n]; 
+for (int i = 0; i < n; i++)     
+for (int j = 0; j < n; j++) 
+graph[i][j] = sc.nextInt(); 
+int[] color = new int[n]; 
+if (solve(graph, m, color, 0)) { 
+for (int c : color) System.out.print(c + " "); 
+} else { 
+System.out.println("No solution"); }}}
+`
+},
+  
+EH: {
+    "SQL Join Example": `-- SQL INNER JOIN Example
+SELECT employees.name, departments.dept_name
+FROM employees
+INNER JOIN departments
+ON employees.dept_id = departments.id;`
+  },
+  
+DBMS: {
+    "FCFS Scheduling": `// First Come First Serve Scheduling
+public class FCFS {
+    public static void main(String[] args) {
+        // Code for FCFS scheduling
+    }
+}`
+  },
+  
+PYTHON: {
+    "Stop and Wait Protocol": `// Stop and Wait Protocol Implementation
+public class StopAndWait {
+    public static void main(String[] args) {
+        // Basic implementation
+    }
+}`
+  }
+};
+
+// Show programs based on selected subject
+function showPrograms(subject) {
+  const programsDiv = document.getElementById('programs');
+  const codeDisplay = document.getElementById('codeDisplay');
+  codeDisplay.innerHTML = ''; // Clear previous code
+  let html = '<h2>Programs:</h2>';
+  for (const programName in data[subject]) {
+    html += `<div class="program" onclick="showCode('${subject}', '${programName}')">${programName}</div>`;
+  }
+  programsDiv.innerHTML = html;
+}
+
+// Show code when a program is clicked
+function showCode(subject, programName) {
+  const codeDisplay = document.getElementById('codeDisplay');
+  const code = data[subject][programName];
+  codeDisplay.innerHTML = `<h2>${programName} Code:</h2><pre>${code}</pre>`;
+}
+</script>
+
+</body>
+</html>
