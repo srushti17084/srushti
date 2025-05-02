@@ -26,17 +26,19 @@
     }
 
     .container {
-      max-width: 1000px;
-      margin: 80px auto 40px auto;
+      width: 100%;
+      /* margin: 80px auto 40px auto; */
       background-color: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      /* padding: 30px; */
+      border-radius: 0%;
+      /* box-shadow: 0 0 10px rgba(0,0,0,0.2); */
+      justify-content: center;
     }
 
     h1, h2 {
       text-align: center;
       color: #333;
+      font-size: 5px;
     }
 
     .subject, .program {
@@ -44,6 +46,8 @@
       color: #007BFF;
       margin: 10px 0;
       text-align: center;
+      font-size: 5px;
+
     }
 
     .subject:hover, .program:hover {
@@ -59,33 +63,38 @@
       padding: 10px;
       border: 1px solid #ccc;
       white-space: pre-wrap;
+      font-size: 5px;
     }
 
     .image-section {
       text-align: center;
-      margin-top: 30px;
+      /* margin-top: 30px; */
     }
 
     .image-section img {
-      max-width: 90%;        /* Better for responsiveness */
+      max-width: 100%;        /* Better for responsiveness */
       height: auto;
-      border-radius: 10px;
+      /* border-radius: 0px; */
       display: block;
       margin: 0 auto;
     }
   </style>
+        <style>
+          html, body {
+              height: 100%;
+              margin: 0;
+          }
+          img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover; /* Ensures the image covers the whole screen */
+          }
+      </style>
 </head>
 <body>
 
   <!-- Logo in top-right corner -->
-  <img class="logo" src="Screenshot 2025-05-01 232254.png" alt="Logo">
-
-
-
-    <div class="image-section">
-      <img src="Screenshot 2025-05-01 232407.png" alt="Parikshak" class="main-image">
-    </div>
-  </div>
+  <img src="Screenshot 2025-05-01 232254.png" alt="Parikshak">
 
   <div class="container">
     <h1>Select a Subject</h1>
@@ -106,7 +115,7 @@ const data = {
   AOA: {
     "Naïve String-Matching": `
 import java.util.Scanner;
-public class Naive {
+public class NaiveStringMatching {
 public static void naiveStringMatch(String text, String pattern){
 int textLength = text.length();
 int patternLength = pattern.length();
@@ -488,7 +497,7 @@ function showCode(subject, programName) {
   codeDisplay.innerHTML = `
     <h2>${programName} Code:</h2>
     <div style="position: relative;">
-      <button onclick="copyCode()" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Copy</button>
+      <button onclick="copyCode()" style="position: absolute; top: 10px; right: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;height: 10px;width: 25px; font-size: 5px;">Copy</button>
       <pre id="codeBlock">${escapedCode}</pre>
     </div>
   `;
