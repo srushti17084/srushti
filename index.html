@@ -142,6 +142,8 @@ For each position i from 0 to n − m:
 • Compare the substring of text starting at i with the pattern.
 • If all characters match, record the position as a match.
 • If any character does not match, move to the next position.
+
+O(m(n − m + 1))
 `,
 
 
@@ -183,7 +185,9 @@ Let the array have n elements.
 • Recursively apply quick sort to the two partitions.
 • Combine the sorted parts and pivot to get the sorted array.
 
+Best/Average Case: O(n log n)
 
+Worst Case: O(n²)
 
 `,
  
@@ -229,6 +233,7 @@ Let the array have n elements.
 • Merge the two sorted halves into one sorted array.
 • Return the merged array.
 
+O(n log n)
 `,
 
 
@@ -269,7 +274,10 @@ Let the array have n elements.
 • For each element in the array:
   If the element is less than min, update min.
   If the element is greater than max, update max.
-• After the loop, min holds the smallest and max holds the largest value.`,
+• After the loop, min holds the smallest and max holds the largest value.
+
+O(n)
+`,
 
 
 "0/1 Knapsack problem using dynamic programming": `
@@ -306,6 +314,8 @@ Let there be n items and the knapsack capacity be W.
    • Set dp[i][w] = max(dp[i-1][w], dp[i-1][w - weight[i]] + value[i])
   – Else, set dp[i][w] = dp[i-1][w]
 • The value in dp[n][W] is the maximum value that can be carried.
+
+O(nW) — where n is number of items and W is capacity
 `,
 
 "Binary Search using the divide and conquer": `
@@ -335,6 +345,7 @@ Let the array be sorted and have n elements.
  – If target < mid element, search in the left half.
  – Else, search in the right half.
 • If the element is not found, return -1.
+O(log n)
 `,
 
 "Insertion sort1": `
@@ -370,6 +381,9 @@ Let the array have n elements.
  – Insert key at the correct position.
 • Repeat for all elements.
 
+Best Case: O(n)
+
+Worst/Average Case: O(n²)
 
 `,
 
@@ -406,6 +420,9 @@ Let the array have n elements.
  – Find the smallest element in the unsorted part of the array.
  – Swap it with the element at position i.
 • Continue until the array is sorted.
+
+O(n²)
+
 `,
 
 
@@ -446,6 +463,9 @@ Let the graph have n vertices and m colors.
  – Move to the next vertex and repeat the process.
  – If no color is valid, backtrack and try another color.
 • If all vertices are colored without conflict, return success.
+
+O(mⁿ)
+
 `
 },
   
