@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Parikshak: Online Program Grading Tool</title>
+  <title>Visual Studio Code</title>
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="vslogo.png">
 
   <style>
     body {
@@ -94,7 +94,7 @@
 <body>
 
   <!-- Logo in top-right corner -->
-  <img src="Screenshot 2025-05-01 232254.png" alt="Parikshak">
+  <img src="vs code.png" alt="Parikshak">
 
   <div class="container">
     <h1>Select a Subject</h1>
@@ -136,336 +136,6 @@ public static void main(String[] args){
 naiveStringMatch(text, pattern);
 scanner.close();}}
 
-algorithm
-Let the text have length n and the pattern have length m.
-For each position i from 0 to n − m:
-• Compare the substring of text starting at i with the pattern.
-• If all characters match, record the position as a match.
-• If any character does not match, move to the next position.
-
-O(m(n − m + 1))
-`,
-
-
-    "Quick sort": `import java.util.Scanner; 
-class Quick { 
-int partition(int a[], int low, int high){ 
-int pivot = a[high]; 
-int i = low - 1; 
-for (int j = low; j < high; j++) { 
-if (a[j] <= pivot) {i++; int temp = a[i]; 
-a[i] = a[j]; a[j] = temp; }} 
-int temp = a[i + 1]; a[i + 1] = a[high]; 
-a[high] = temp; 
-return i + 1;}
-void quickSort(int a[], int low, int high) { 
-if (low < high) { 
-int pi = partition(a, low, high); 
-quickSort(a, low, pi - 1); 
-quickSort(a, pi + 1, high); }} 
-public static void main(String args[]) { 
-Scanner sc = new Scanner(System.in); 
-int n = sc.nextInt(); 
-int a[] = new int[n]; 
-for (int i = 0; i < n; i++) { 
-a[i] = sc.nextInt(); } 
-Quick ob = new Quick(); 
-ob.quickSort(a, 0, a.length - 1); 
-for (int i = 0; i < a.length; ++i) 
-System.out.print(a[i] + " "); 
-sc.close(); }}
-
-Algorithm
-Let the array have n elements.
-• If the array has 0 or 1 elements, it is already sorted.
-• Select a pivot element.
-• Partition the array into two parts:
- – Elements less than the pivot.
- – Elements greater than or equal to the pivot.
-• Recursively apply quick sort to the two partitions.
-• Combine the sorted parts and pivot to get the sorted array.
-
-Best/Average Case: O(n log n)
-
-Worst Case: O(n²)
-
-`,
- 
-
-
-
-
-
-"Merge Sort": `
-import java.util.Scanner; 
-class Merge{ 
-void merge(int a[], int l, int m, int r) { 
-int n1 = m - l + 1; int n2 = r - m; 
-int L[] = new int[n1]; int R[] = new int[n2]; 
-for (int i = 0; i < n1; ++i) L[i] = a[l + i]; 
-for (int j = 0; j < n2; ++j) R[j] = a[m +1 +j]; 
-int i = 0, j = 0; int k = l; 
-while (i < n1 && j < n2) { 
-if (L[i] <= R[j]) { a[k] = L[i]; i++; }
-else { a[k] = R[j]; j++; } k++; } 
-while (i < n1) { a[k] = L[i]; i++; 
-k++;} while (j < n2) { a[k] = R[j]; 
-j++; k++; } } 
-void sort(int a[], int l, int r) { 
-if (l < r) {int m = (l + r) / 2; 
-sort(a, l, m); sort(a, m + 1, r); 
-merge(a, l, m, r); } } 
-public static void main(String args[]) { 
-Scanner sc = new Scanner(System.in); 
-int n = sc.nextInt(); int a[] = new int[n]; 
-for (int i = 0; i < n; i++) { 
-a[i] = sc.nextInt(); } 
-Merge ob = new Merge(); ob.sort(a,0,a.length-1); 
-for (int i = 0; i < a.length; ++i) 
-System.out.print(a[i] + " "); 
-sc.close(); } }
-
-Algorithm
-Let the array have n elements.
-• If the array has 0 or 1 elements, it is already sorted.
-• Divide the array into two halves.
-• Recursively sort each half.
-• Merge the two sorted halves into one sorted array.
-• Return the merged array.
-
-O(n log n)
-`,
-
-
-"Min-Max Element in array": `
-import java.util.Scanner;
-public class MinMaxDivideConquer {
-static class Result {
-int min; int max;}
-static Result findMinMax(int[] arr, int low, int high) {
-Result result = new Result();
-if (low == high) {
-result.min = result.max = arr[low];
-return result;}
-if (high == low + 1) {
-if (arr[low] < arr[high]) {
-result.min = arr[low];
-result.max = arr[high];
-} else {result.min = arr[high];
-result.max = arr[low];}
-return result;}
-int mid = (low + high) / 2;
-Result left = findMinMax(arr, low, mid);
-Result right = findMinMax(arr, mid + 1, high);
-result.min = Math.min(left.min, right.min);
-result.max = Math.max(left.max, right.max);
-return result;}
-public static void main(String[] args) {
-Scanner sc = new Scanner(System.in);
-int n = sc.nextInt(); int arr[] = new int[n];
-for(int i=0;i<   n;i++){arr[i] = sc.nextInt();}
-Result result = findMinMax(arr, 0, arr.length- 1);
-System.out.println(result.min);
-System.out.println(result.max);}}
-
-algorithm
-Let the array have n elements.
-• Initialize min and max with the first element.
-• For each element in the array:
-  If the element is less than min, update min.
-  If the element is greater than max, update max.
-• After the loop, min holds the smallest and max holds the largest value.
-
-O(n)
-`,
-
-
-"0/1 Knapsack problem using dynamic programming": `
-import java.util.Scanner; 
-public class KnapsackDP { 
-public static int solveKnapsack(int[] profits, 
-int[] weights, int capacity) { int n = 
-profits.length; int[][] dp = new int[n + 1]
-[capacity + 1]; 
-for (int i = 1; i <= n; i++) { 
-for (int w = 1; w <= capacity; w++) { 
-if (weights[i - 1] <= w) 
-dp[i][w] = Math.max(dp[i -1][w], profits[i -1]+ 
-dp[i - 1][w - weights[i - 1]]); 
-else dp[i][w] = dp[i - 1][w]; } } 
-return dp[n][capacity]; } 
-public static void main(String[] args) { 
-Scanner scanner = new Scanner(System.in);  
-int n = scanner.nextInt(); int[] profits = new int[n]; 
-int[] weights = new int[n]; 
-for (int i = 0; i < n; i++) profits[i] = scanner.nextInt(); 
-for (int i = 0; i < n; i++) weights[i] = scanner.nextInt(); 
-int capacity = scanner.nextInt(); 
-int maxProfit = solveKnapsack(profits, weights, capacity); 
-System.out.println(maxProfit); 
-scanner.close(); } }
-
-Algorithm
-Let there be n items and the knapsack capacity be W.
-• Create a table of size (n+1) × (W+1), initialized to 0.
-• For each item i from 1 to n:
- – For each weight w from 1 to W:
-  – If weight of item i ≤ w:
-   • Set dp[i][w] = max(dp[i-1][w], dp[i-1][w - weight[i]] + value[i])
-  – Else, set dp[i][w] = dp[i-1][w]
-• The value in dp[n][W] is the maximum value that can be carried.
-
-O(nW) — where n is number of items and W is capacity
-`,
-
-"Binary Search using the divide and conquer": `
-import java.util.Scanner; 
-class Binary{ 
-int binarySearch(int a[], int l, int r, int x) { 
-while (l <= r) { int m = (l + r) / 2; 
-if (a[m] == x) { return m; } else if (a[m] > x) { 
-r = m - 1; } else { l = m + 1; }} return -1; } 
- public static void main(String args[]) { 
-Scanner sc = new Scanner(System.in); 
-int n = sc.nextInt(); int a[] = new int[n]; 
-for (int i = 0; i < n; i++) { a[i] = sc.nextInt(); } 
-int x = sc.nextInt(); Binary ob = new Binary(); 
-int res = ob.binarySearch(a, 0, n - 1, x); 
-if (res == -1) System.out.println("-1"); 
-else System.out.println(res+1); 
-sc.close(); } }
-
-Algorithm
-
-Let the array be sorted and have n elements.
-• Set low = 0 and high = n − 1.
-• While low ≤ high:
- – Compute mid = (low + high) / 2
- – If the element at mid is the target, return mid.
- – If target < mid element, search in the left half.
- – Else, search in the right half.
-• If the element is not found, return -1.
-O(log n)
-`,
-
-"Insertion sort1": `
-import java.util.Scanner; 
-public class InsertionSort { 
-public static void insertionSort(int[] arr) { 
-int n = arr.length; for (int i = 1; i < n; i++)
-{ int key = arr[i];  int j = i - 1; 
-while (j >= 0 && arr[j] > key) { 
-arr[j + 1] = arr[j]; 
-j = j - 1; } arr[j + 1] = key;   } } 
-public static void printArray(int[] arr) { 
-for (int i = 0; i < arr.length; i++) { 
-System.out.print(arr[i] + " "); } 
-System.out.println(); } 
-public static void main(String[] args) { 
-Scanner scanner = new Scanner(System.in); 
-int size = scanner.nextInt(); int[] 
-arr = new int[size]; 
-for(int i=0; i<  size; i++)
-{ arr[i] = scanner.nextInt(); } 
-insertionSort(arr); printArray(arr); 
-scanner.close(); } } 
-
-Algorithm
-
-Let the array have n elements.
-• Start from the second element (index 1).
-• For each element at position i:
- – Store it in a variable key.
- – Compare it with elements to its left.
- – Shift all greater elements to the right.
- – Insert key at the correct position.
-• Repeat for all elements.
-
-Best Case: O(n)
-
-Worst/Average Case: O(n²)
-
-`,
-
-
-
-"Selection Sort": `
-import java.util.Scanner; 
-class Main { 
-static void selectionSort(int[] arr){ 
-int n = arr.length; 
-for (int i = 0; i < n - 1; i++) { 
-int min_idx = i; 
-for (int j = i + 1; j < n; j++) { 
-if (arr[j] < arr[min_idx]) { 
-min_idx = j; } } int temp = arr[i]; 
-arr[i] = arr[min_idx]; arr[min_idx] = temp;
-}} static void printArray(int[] arr){ 
-for (int val : arr) { 
-System.out.print(val + " "); } 
-System.out.println(); } 
-public static void main(String[] args){ 
-Scanner scanner = new Scanner(System.in); 
-int n = scanner.nextInt(); 
-int[] arr = new int[n]; 
-for (int i = 0; i < n; i++) { 
-arr[i] = scanner.nextInt(); 
-} // printArray(arr); 
-selectionSort(arr); printArray(arr); 
-scanner.close(); } }
-
-Algorithm
-Let the array have n elements.
-• For each position i from 0 to n−1:
- – Find the smallest element in the unsorted part of the array.
- – Swap it with the element at position i.
-• Continue until the array is sorted.
-
-O(n²)
-
-`,
-
-
-
-"Graph Coloring": `
-import java.util.Scanner; 
-public class GraphColoring { 
-static boolean isSafe(int v, int[][] graph, 
-int[] color, int c){
-for(int i = 0; i<   graph.length; i++) 
-if (graph[v][i] == 1 && color[i] == c) 
-return false; return true; } 
-static boolean solve(int[][] graph, int m, 
-int[] color, int v) { if (v == graph.length) 
-return true; for (int c = 1; c <= m; c++){ 
-if (isSafe(v, graph, color, c)){ 
-color[v] = c; if (solve(graph, m, color,v + 1)) 
-return true; color[v]=0; }} return false; }
-public static void main(String[] args) { 
-Scanner sc = new Scanner(System.in); 
-int n = sc.nextInt();  
-int m = sc.nextInt();      
-int[][] graph = new int[n][n]; 
-for (int i = 0; i < n; i++)     
-for (int j = 0; j < n; j++) 
-graph[i][j] = sc.nextInt(); 
-int[] color = new int[n]; 
-if (solve(graph, m, color, 0)) { 
-for (int c : color) System.out.print(c + " "); 
-} else { 
-System.out.println("No solution"); }}}
-
-Algorithm
-Let the graph have n vertices and m colors.
-• Start at vertex 0.
-• For each color from 1 to m:
- – If the color is not used by any adjacent vertex, assign it.
- – Move to the next vertex and repeat the process.
- – If no color is valid, backtrack and try another color.
-• If all vertices are colored without conflict, return success.
-
-O(mⁿ)
-
 `
 },
   
@@ -487,13 +157,270 @@ public class FCFS {
   },
   
 PYTHON: {
-    "Stop and Wait Protocol": `// Stop and Wait Protocol Implementation
-public class StopAndWait {
-    public static void main(String[] args) {
-        // Basic implementation
-    }
-}`
-  }
+    "Basic Data Types, Operators, and Control Statements": 
+    ` 
+a = int(input("Enter an integer: ")) 
+b = float(input("Enter a float: ")) 
+c = input("Enter a string: ") 
+print("Integer:", a) 
+print("Float:", b) 
+print("String:", c)  
+print("Addition:", a + b) 
+print("Multiplication:", a * b) 
+if a > b: 
+    print("Integer is greater than float.") 
+elif a == b: 
+    print("Both are equal.") 
+else: 
+    print("Float is greater than integer.") `,
+
+"Lists Tuples and Dictionaries": 
+    `names = input("Enter names (comma separated): ").split(',') 
+ages = input("Enter corresponding ages (comma separated): ").split(',') 
+ages = [int(age) for age in ages] 
+info = dict(zip(names, ages)) 
+print("List of names:", names) 
+print("Tuple of ages:", tuple(ages)) 
+print("Dictionary (name: age):") 
+for name, age in info.items(): 
+    print(name, ":", age) `,
+
+"Classes and Inheritance (Minimal Class Use Required)": 
+    `class Person: 
+    def __init__(self, name): 
+        self.name = name 
+    def show(self): 
+        print("Name:", self.name) 
+class Student(Person): 
+    def __init__(self, name, roll): 
+        super().__init__(name) 
+        self.roll = roll 
+    def display(self): 
+        print("Roll Number:", self.roll) 
+name = input("Enter your name: ") 
+roll = input("Enter your roll number: ") 
+s = Student(name, roll) 
+s.show() 
+s.display()`,
+
+"Custom Exception with User Input": 
+    `class NegativeNumberError(Exception): 
+    pass 
+try: 
+    num = int(input("Enter a positive number: ")) 
+    if num < 0: 
+        raise NegativeNumberError("Negative number entered.") 
+    print("Number is valid:", num) 
+except ValueError: 
+    print("Invalid input. Please enter an integer.") 
+except NegativeNumberError as e: 
+    print("Error:", e) `,
+
+
+"File Read, Append, and Display": 
+    `filename = "example.txt" 
+data = input("Enter text to append to file: ") 
+with open(filename, "a") as file: 
+    file.write(data + "\n") 
+print("\n--- File Content ---") 
+with open(filename, "r") as file: 
+    content = file.read() 
+    print(content) `
+,
+
+"Count Lines, Words, Characters in File": 
+    ` 
+filename = "example.txt" 
+with open(filename, "r") as file: 
+    content = file.read() 
+lines = content.splitlines() 
+words = content.split() 
+characters = len(content) 
+print("Number of lines:", len(lines)) 
+print("Number of words:", len(words)) 
+print("Number of characters:", characters)`,
+
+
+"Simple Tkinter GUI (Labels, Entry, Button)": 
+    `import tkinter as tk 
+root = tk.Tk() 
+root.title("Simple GUI") 
+root.geometry("300x150") 
+label = tk.Label(root, text="Enter your name:") 
+label.pack() 
+entry = tk.Entry(root) 
+entry.pack() 
+output = tk.Label(root, text="") 
+output.pack() 
+def show_message(): 
+    name = entry.get() 
+    output.config(text="Hello, " + name) 
+button = tk.Button(root, text="Submit", command=show_message) 
+button.pack() 
+root.mainloop()` ,
+
+"Stack and Queue using Lists": 
+    `stack = [] 
+queue = [] 
+item = input("Enter item to push to stack: ") 
+stack.append(item) 
+print("Stack after push:", stack) 
+stack.pop() 
+print("Stack after pop:", stack) 
+item = input("Enter item to enqueue to queue: ") 
+queue.append(item) 
+print("Queue after enqueue:", queue) 
+queue.pop(0) 
+print("Queue after dequeue:", queue) ` ,
+
+"*SQLite CRUD Program": 
+    `import sqlite3 
+conn = sqlite3.connect("records.db") 
+cursor = conn.cursor() 
+cursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY 
+KEY, name TEXT)") 
+while True: 
+    print("\n1. Insert\n2. View\n3. Update\n4. Delete\n5. Exit") 
+    ch = input("Enter your choice: ") 
+    if ch == '1': 
+        name = input("Enter name: ") 
+        cursor.execute("INSERT INTO users (name) VALUES (?)", (name,)) 
+        conn.commit() 
+        print("Record added.") 
+    elif ch == '2': 
+        cursor.execute("SELECT * FROM users") 
+        for row in cursor.fetchall(): 
+            print(row) 
+    elif ch == '3': 
+        id = input("Enter ID to update: ") 
+        name = input("Enter new name: ") 
+        cursor.execute("UPDATE users SET name=? WHERE id=?", (name, id)) 
+        conn.commit() 
+        print("Record updated.") 
+    elif ch == '4': 
+        id = input("Enter ID to delete: ") 
+        cursor.execute("DELETE FROM users WHERE id=?", (id,)) 
+        conn.commit() 
+        print("Record deleted.") 
+    elif ch == '5': 
+        break 
+    else: 
+        print("Invalid choice.") 
+conn.close() ` ,
+
+"Client-Server Communication with Sockets": 
+    `*Server:* 
+import socket 
+server_socket = socket.socket() 
+server_socket.bind(("localhost", 12345)) 
+server_socket.listen(1) 
+print("Waiting for connection...") 
+conn, addr = server_socket.accept() 
+print("Connected to:", addr) 
+msg = conn.recv(1024).decode() 
+print("Client says:", msg) 
+conn.send("Hello from server!".encode()) 
+conn.close() 
+ 
+*Client:* 
+import socket 
+client_socket = socket.socket() 
+client_socket.connect(("localhost", 12345)) 
+client_socket.send("Hello from client!".encode()) 
+msg = client_socket.recv(1024).decode() 
+print("Server says:", msg) 
+client_socket.close() ` ,
+
+"Web Scraping with requests": 
+    `import requests 
+url = input("Enter a URL (e.g., https://example.com): ") 
+try: 
+    response = requests.get(url) 
+    print("Status code:", response.status_code) 
+    print("\n--- First 500 characters of page content ---\n") 
+    print(response.text[:500]) 
+except Exception as e: 
+    print("Failed to fetch the page:", e) ` ,
+
+"Django Form with Input Validation (Regex)": 
+    `open terminal and run the below commands one by one 
+python -m venv venv 
+venv\Scripts\activate 
+pip install django 
+django-admin startproject myproject 
+cd myproject 
+python manage.py startapp myapp 
+open folder myproject 
+create folder (templates) in myproject 
+create file (index.html) in templates, add code( in the code add your 
+name and roll no) 
+
+&lt;!DOCTYPE html&gt; 
+&lt;html lang="en"&gt; 
+&lt;head&gt; 
+    &lt;meta charset="UTF-8"&gt; 
+    &lt;meta name="viewport" content="width=device-width, initial scale=1.0"&gt; 
+    &lt;title&gt;Student Profile - Name&lt;/title&gt; 
+    &lt;style&gt; 
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f9; 
+            margin: 0; 
+            padding: 0; 
+        } 
+        .container { 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background-color: #fff; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+        } 
+        .container h1 { 
+            color: #333; 
+            font-size: 2em; 
+        } 
+        .details { 
+            margin-top: 20px; 
+            font-size: 1.2em; 
+            color: #555; 
+        } 
+        .details span { 
+            font-weight: bold; 
+            color: #222; 
+        } 
+        .footer { 
+            margin-top: 30px; 
+            font-size: 1em; 
+            color: #888; 
+        } 
+    &lt;/style&gt; 
+&lt;/head&gt; 
+&lt;body&gt; 
+    &lt;div class="container"&gt; 
+        &lt;h1&gt;Student Profile&lt;/h1&gt; 
+        &lt;div class="details"&gt; 
+            &lt;p&gt;&lt;span&gt;Name:&lt;/span&gt; ADD YOUR NAME HERE&lt;/p&gt; 
+            &lt;p&gt;&lt;span&gt;Roll Number:&lt;/span&gt; ADD ROLL NO&lt;/p&gt; 
+            &lt;p&gt;&lt;span&gt;Class:&lt;/span&gt; SYCS (Second Year Computer Science)&lt;/p&gt; 
+            &lt;p&gt;&lt;span&gt;College:&lt;/span&gt; Shah and Anchor Kachhi Engineering College&lt;/p&gt; 
+        &lt;/div&gt; 
+        &lt;div class="footer"&gt; 
+            &lt;p&gt;&copy; 2025&lt;/p&gt; 
+        &lt;/div&gt; 
+    &lt;/div&gt; 
+&lt;/body&gt; 
+&lt;/html&gt;
+
+go to settings.py in myproject  
+ in installed apps ('myapp',) 
+go to manage.py 
+go to terminal run command ( python manage.py runserver) 
+Starting development server at http://127.0.0.1:8000/ (click on this http://127.0.0.1:8000/) 
+or 
+go to index.html and click on go live`
+  },
 };
 
 // Show programs based on selected subject
